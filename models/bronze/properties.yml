@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: bronze_date   # Must match the model's filename
+    config:
+      materialized: view
+
+  - name: bronze_sales   # Must match the model's filename
+    columns:
+      - name: sales_id
+        data_tests:
+          - unique
+          - not_null
+      - name: gross_amount
+        data_tests:
+          - generic_non_negative
+
+  - name: bronze_stores   # Must match the model's filename
+    columns:
+      - name: store_sk
+        data_tests:
+          - unique
+          - not_null
+      - name: store_name
+        data_tests:
+          - accepted values:
+                arguments:
+                    values: ['MegaMart Manhattan', 'MegaMart Brooklyn', 'MegaMart Austin' , 'MegaMart San Jose','MegaMart Toronto']
