@@ -8,5 +8,13 @@ dbt_tutorial:
       threads: 1
       token: "{{ env_var('DATABRICKS_TOKEN') }}"
       type: databricks
+    prod:
+      catalog: dbt_tutorial_prod
+      host: dbc-a07530e0-fa59.cloud.databricks.com
+      http_path: /sql/1.0/warehouses/cf1f3b8b2f4f8e3a
+      schema: default
+      threads: 1
+      token: "{{ env_var('DATABRICKS_TOKEN') }}"
+      type: databricks
   target: dev
   
